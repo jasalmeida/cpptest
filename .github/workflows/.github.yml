@@ -37,9 +37,20 @@ jobs:
       - name: Run test
         run: build/test
         
-      # Artifacts
-      - name: Upload artifacts
+      # Upload executable artifacts
+      - name: Upload executable artifacts
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: test executables
+          path: |
+            build/test
+            build/Debug/test.exe
+            build/Release/test.exe
+            
+      # Upload build dir artifact
+      - name: Upload build dir artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: build dir
           path: build/**/*
+            
